@@ -27,10 +27,12 @@ for team_url in team_urls:
 
     if stats and stats.columns: stats.columns = stats.columns.droplevel() ##formatting the stats
 
-    team_data = stats
+    # Assuming 'team_data' is a BeautifulSoup Tag
+    # Convert it into a DataFrame
+    team_data = pd.read_html(str(stats))[0]
     team_data["Team"]= team_name
     all_teams.append(team_data) ## appending the data
     time.sleep(5) ## making sure we don't get blocked from scraping
 
 stat_df = pd.concat(all_teams) ## concatenating all of the stats
-stat_df.to_csv("stats.csv") ## importing to csv
+stat_df.to_csv("stats1.csv") ## importing to csv
