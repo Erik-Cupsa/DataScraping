@@ -21,10 +21,6 @@ for team_url in team_urls:
     soup = BeautifulSoup(data, 'lxml')
     stats = soup.find_all('table', class_ = "stats_table")[0] ##again, only want the first table
 
-    standings_data = requests.get('https://fbref.com/en/comps/9/Premier-League-Stats')
-    html_standings = standings_data.text
-    soup = BeautifulSoup(html_standings, 'lxml')
-
     if stats and stats.columns: stats.columns = stats.columns.droplevel() ##formatting the stats
 
     # Assuming 'team_data' is a BeautifulSoup Tag
@@ -35,4 +31,4 @@ for team_url in team_urls:
     time.sleep(5) ## making sure we don't get blocked from scraping
 
 stat_df = pd.concat(all_teams) ## concatenating all of the stats
-stat_df.to_csv("stats1.csv") ## importing to csv
+stat_df.to_csv("stats.csv") ## importing to csv
