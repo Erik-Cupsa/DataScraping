@@ -28,7 +28,7 @@ for team_url in team_urls:
     team_data = pd.read_html(str(stats))[0]
     team_data["Team"]= team_name
     all_teams.append(team_data) ## appending the data
-    time.sleep(5) ## making sure we don't get blocked from scraping
+    time.sleep(5) ## making sure we don't get blocked from scraping by delaying each loop by 5 seconds
 
 stat_df = pd.concat(all_teams) ## concatenating all of the stats
 stat_df.to_csv("stats.csv") ## importing to csv
