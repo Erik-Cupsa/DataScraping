@@ -10,7 +10,7 @@ soup = BeautifulSoup(html, 'lxml')
 table = soup.find_all('table', class_ = 'stats_table')[0] ##only want the first table, therefore the first index
 
 links = table.find_all('a') ## finding all links in the table 
-links = [l.get("href") for l in links] 
+links = [l.get("href") for l in links] ##parsing through links
 links = [l for l in links if '/squads/' in l] ##filtering through links to only get squads
 
 team_urls = [f"https://fbref.com{l}" for l in links] ## formatting back to links
